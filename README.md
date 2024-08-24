@@ -10,6 +10,8 @@ In this task, you will need to simply build a driver using the `Makefile`. Even 
 make
 ```
 
+If you are not sure what is the kernel module, you can read more at https://sysprog21.github.io/lkmpg/.
+
 ### Step 2 - Load a driver
 Since your driver is a C module, you can use `insmod` to load it as follows.
 
@@ -88,9 +90,9 @@ Your task is to implement the `LOWER` mode, where the driver should, instead of 
 
 ## Grading
 - 20% - Task 1 
-- 30% - Task 2 (If Task 1 is not complete, Task 2 will not be graded.)
-- 30% - Task 3 (If Tasks 1 and 2 are not complete, Task 3 will not be graded.)
-- 20% - Code Style (If Tasks 2 and 3 are not complete, the code style will not be graded.)
+- 30% - Task 2 (If task 1 is not complete, task 2 will not be graded.)
+- 30% - Task 3 (If tasks 1 and 2 are not complete, task 3 will not be graded.)
+- 20% - Code Style (If tasks 1, 2, and 3 are not complete, the code style will not be graded.)
 
 ## References
 - https://olegkutkov.me/2018/03/14/simple-linux-character-device-driver/
