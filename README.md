@@ -1,4 +1,5 @@
 # SYS-205 Assessment 1 - Building a driver for heartydev
+The goal of this assessment is to evaluate whether you briefly **understand** how applications and operating systems interact with devices. You will implement a simple character device driver to demonstrate those knowledges.
 
 ## Setting up
 
