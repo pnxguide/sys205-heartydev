@@ -56,7 +56,7 @@ echo 'hello, heartydev!' > /dev/heartydev
 ```
 
 ### Task 1.2 - Implement `heartydev_read` (10 points)
-Your task is to implement the `heartydev_read` by copying the text from the driver buffer into the user buffer. However, you need to capitalize all the lowercase English letters before copying.
+Your task is to implement the `heartydev_read` by copying the text from the driver buffer into the user buffer. However, **all the lowercase English letters must be capitalized**.
 
 To verify, you should be able to call `heartydev_read` through the following command.
 
