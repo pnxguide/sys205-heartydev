@@ -4,7 +4,7 @@ The goal of this assessment is to evaluate whether you briefly **understand** ho
 ## Setting up
 
 ### Step 1 - Build a driver module
-In this task, you will need to simply build a driver using the `Makefile`. Even though you can type the following commands, I would recommend you look at the commands in the `Makefile` to see how the compilation process work.
+In this task, you will need to simply build a driver using the `Makefile`. Even though you can type the following commands, I would recommend you look at the commands in the `Makefile` to see how the compilation process works.
 
 ```sh
 make
