@@ -1,10 +1,10 @@
-#include <linux/init.h>
-#include <linux/module.h>
 #include <linux/cdev.h>
 #include <linux/device.h>
-#include <linux/kernel.h>
-#include <linux/uaccess.h>
 #include <linux/fs.h>
+#include <linux/init.h>
+#include <linux/kernel.h>
+#include <linux/module.h>
+#include <linux/uaccess.h>
 
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("A simple character device driver");
@@ -30,6 +30,11 @@ dev_t dev = 0;
 static struct class *heartydev_class = NULL;
 static struct cdev heartydev_cdev;
 
+static int heartydev_uevent(struct device *dev, struct kobj_uevent_env *env) {
+    add_uevent_var(env, "DEVMODE=%#o", 0666);
+    return 0;
+}
+
 static int __init heartydev_init(void) {
     if (alloc_chrdev_region(&dev, 0, 1, "heartydev") < 0) {
         printk(KERN_ALERT "heartydev registration failed\n");
@@ -37,13 +42,13 @@ static int __init heartydev_init(void) {
     }
 
     heartydev_class = class_create(THIS_MODULE, "heartydev");
+    heartydev_class->dev_uevent = heartydev_uevent;
     cdev_init(&heartydev_cdev, &heartydev_fops);
     cdev_add(&heartydev_cdev, MKDEV(MAJOR(dev), 0), 1);
     device_create(heartydev_class, NULL, MKDEV(MAJOR(dev), 0), NULL,
                   "heartydev");
 
     printk(KERN_ALERT "heartydev registered\n");
-
     return 0;
 }
 
@@ -79,7 +84,7 @@ static ssize_t heartydev_read(struct file *file, char __user *buf, size_t count,
 static ssize_t heartydev_write(struct file *file, const char __user *buf,
                                size_t count, loff_t *offset) {
     printk("heartydev_write\n");
-    return 0;
+    return count;
 }
 
 module_init(heartydev_init);
